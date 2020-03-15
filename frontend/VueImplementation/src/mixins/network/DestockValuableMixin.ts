@@ -31,7 +31,7 @@ class DestockValuableMixin {
     async destockValuable() : Promise<Object> {
         this.destockingValuable = true;
         var returnObject : Object = await http.getJSON("/destock-valuable/", {
-            seral: this.serial,
+            serial: this.serial,
             stock: this.stock
         }, "POST")
         this.destockingValuable = false;

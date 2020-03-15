@@ -32,7 +32,7 @@ class StockValuableMixin {
     async stockValuable() : Promise<Object> {
         this.stockingValuable = true;
         var returnObject : Object = await http.getJSON("/stock-valuable/", {
-            seral: this.serial,
+            serial: this.serial,
             stock: this.stock
         }, "POST")
         this.stockingValuable = false;

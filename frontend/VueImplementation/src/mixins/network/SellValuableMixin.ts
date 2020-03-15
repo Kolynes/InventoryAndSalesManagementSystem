@@ -32,7 +32,7 @@ class SellValuableMixin {
     async sellValuable() : Promise<Object> {
         this.sellingValuable = true;
         var returnObject : Object = await http.getJSON("/sell-valuable/", {
-            seral: this.serial,
+            serial: this.serial,
             quantity: this.quantity
         }, "POST")
         this.sellingValuable = false;
