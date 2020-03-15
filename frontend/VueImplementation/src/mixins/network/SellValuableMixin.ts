@@ -1,4 +1,4 @@
-package network;
+import http from "../../plugins/http";
 
 
 /**
@@ -29,9 +29,14 @@ class SellValuableMixin {
     /**
      * @return
      */
-    sellValuable() : Promise<Object> {
-        // TODO implement here
-        return null;
+    async sellValuable() : Promise<Object> {
+        this.sellingValuable = true;
+        var returnObject : Object = await http.getJSON("/sell-valuable/", {
+            seral: this.serial,
+            quantity: this.quantity
+        }, "POST")
+        this.sellingValuable = false;
+        return returnObject;
     }
 
 }

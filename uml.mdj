@@ -16682,7 +16682,7 @@
 													"top": 812,
 													"width": 243.013671875,
 													"height": 13,
-													"text": "+changeValuablePrice: Boolean",
+													"text": "+changingValuablePrice: Boolean",
 													"horizontalAlignment": 0
 												}
 											],
@@ -18612,7 +18612,7 @@
 													"_parent": {
 														"$ref": "AAAAAAFw0/ALpoL9Ya8="
 													},
-													"name": "changeValuablePrice",
+													"name": "changingValuablePrice",
 													"type": "Boolean"
 												}
 											],

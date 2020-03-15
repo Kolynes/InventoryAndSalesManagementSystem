@@ -1,4 +1,4 @@
-package network;
+import http from "../../plugins/http";
 
 
 /**
@@ -29,9 +29,14 @@ class ChangeValuableNameMixin {
     /**
      * @return
      */
-    changeValuableName() : Promise<Object> {
-        // TODO implement here
-        return null;
+    async changeValuableName() : Promise<Object> {
+        this.changingValuableName = true;
+        var returnObject : Object = await http.getJSON("/change-valuable-name/", {
+            serial: this.serial,
+            name: this.name
+        }, "POST")
+        this.changingValuableName = false;
+        return returnObject;
     }
 
 }

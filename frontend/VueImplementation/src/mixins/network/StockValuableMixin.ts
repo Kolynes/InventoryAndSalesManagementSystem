@@ -1,4 +1,4 @@
-package network;
+import http from "../../plugins/http";
 
 
 /**
@@ -29,9 +29,14 @@ class StockValuableMixin {
     /**
      * @return
      */
-    stockValuable() : Promise<Object> {
-        // TODO implement here
-        return null;
+    async stockValuable() : Promise<Object> {
+        this.stockingValuable = true;
+        var returnObject : Object = await http.getJSON("/stock-valuable/", {
+            seral: this.serial,
+            stock: this.stock
+        }, "POST")
+        this.stockingValuable = false;
+        return returnObject;
     }
 
 }

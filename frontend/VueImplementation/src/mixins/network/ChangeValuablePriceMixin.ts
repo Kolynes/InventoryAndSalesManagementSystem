@@ -1,4 +1,4 @@
-package network;
+import http from "../../plugins/http";
 
 
 /**
@@ -24,14 +24,19 @@ class ChangeValuablePriceMixin {
     /**
      * 
      */
-    changeValuablePrice : Boolean;
+    changingValuablePrice : Boolean;
 
     /**
      * @return
      */
-    changeValuablePrice() : Promise<Object> {
-        // TODO implement here
-        return null;
+    async changeValuablePrice() : Promise<Object> {
+        this.changingValuablePrice = true;
+        var returnObject : Object = await http.getJSON("/stock-valuable/", {
+            serial: this.serial,
+            price: this.price
+        }, "POST")
+        this.changingValuablePrice = false;
+        return returnObject;
     }
 
 }
