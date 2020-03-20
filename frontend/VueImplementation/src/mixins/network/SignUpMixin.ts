@@ -1,5 +1,4 @@
-package network;
-
+import http from "../../plugins/http";
 
 /**
  * @author Kolynes Chinedu
@@ -44,9 +43,16 @@ class SignUpMixin {
     /**
      * @return
      */
-    signUp() : Promise<Object> {
-        // TODO implement here
-        return null;
+    async signUp() : Promise<Object> {
+        this.signingUp = true;
+        var returnObject =  await http.getJSON("/sign-up/", {
+            username: this.username,
+            email: this.email,
+            password: this.password,
+            name: this.name
+        }, "POST")
+        this.signingUp = false;
+        return returnObject;
     }
 
 }

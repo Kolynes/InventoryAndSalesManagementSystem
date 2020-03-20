@@ -1,5 +1,4 @@
-package network;
-
+import http from "../../plugins/http";
 
 /**
  * @author Kolynes Chinedu
@@ -24,7 +23,7 @@ class SignInMixin {
     /**
      * 
      */
-    signingIn : Password;
+    signingIn : Boolean;
 
     /**
      * 
@@ -34,10 +33,15 @@ class SignInMixin {
     /**
      * @return
      */
-    signIn() : Promise<Object> {
-        // TODO implement here
-        return null;
-    }
+    async signIn() : Promise<Object> {
+       this.signingIn = true;
+       var returnObject = await http.getJSON("/sign-in/", {
+           username: this.username,
+           password: this.password
+       }, "POST")
+       this.signingIn = false;
+        return returnObject;
+    }   
 
 }
 export = SignInMixin;
